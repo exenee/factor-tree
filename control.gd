@@ -35,6 +35,8 @@ func _on_button_pressed() -> void:
 		$"Prime Factorization".text = "Prime Factorization: Cannot factor any decimal number, or number is way too large!"
 	elif float($Number.text) > 999999999999999:
 		$"Prime Factorization".text = "Prime Factorization: Number too big to process!"
+	elif float($Number.text) < 0:
+		$"Prime Factorization".text = "Prime Factorization: Cannot get prime factor of a negative number!"
 	else:
 		$"Prime Factorization".text = "Prime Factorization: " + str(format_factors(get_prime_factorization(int($Number.text))))
 		$"Prime Factorization".text = $"Prime Factorization".text.replace("[", "").replace("]", "")
@@ -44,7 +46,9 @@ func _on_button_pressed() -> void:
 	#######################
 	
 	if int($Number.text) < 0:
-		$"Square Root".text = "Square Root: Cannot get square root of non-zero negative number"
+		$"Square Root".text = "Square Root: Cannot get square root of non-zero negative number, or number too large!"
+	elif int($Number.text) > 999999999999999:
+		$"Square Root".text = "Square Root: Number too big to process!"
 	else:
 		$"Square Root".text = "Square Root: " + str(format_square_root(float($Number.text)))
 		# Temporary, replace with more 
