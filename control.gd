@@ -36,7 +36,9 @@ func _on_button_pressed() -> void:
 	if int($Number.text) < 0:
 		$"Square Root".text = "Square Root: Cannot get square root of non-zero negative number"
 	else:
-		$"Square Root".text = "Square Root: " + str(sqrt(float($Number.text))) # Temporary
+		$"Square Root".text = "Square Root: " + str(sqrt(float($Number.text))) 
+		# Temporary, replace with more 
+		# readable representation later
 	
 func get_factors(number: int) -> Array:
 	#######################
