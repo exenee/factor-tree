@@ -116,6 +116,10 @@ func format_square_root(value: float) -> String:
 	# Get the square root of the number
 	var root_value = sqrt(value)
 	
+	# Handle perfect square case (integer square root is the whole number)
+	if root_value == int(root_value):  # If the square root is an integer
+		return str(int(root_value))
+	
 	# Try to simplify the square root by checking for square factors
 	var factor = 1
 	var remaining_value = value
@@ -126,11 +130,8 @@ func format_square_root(value: float) -> String:
 			factor = i
 			remaining_value /= (i * i)
 	
-	# Now format the string based on whether there was a simplification
+	# If no simplification is possible, just return the square root in the standard form
 	if factor == 1:
-		return "√" + str(value)  # If no simplification, just display √value
+		return "√" + str(int(value))
 	else:
-		if remaining_value == 1:
-			return str(factor) + "√1"  # Handle the case for perfect squares like 4
-		else:
-			return str(factor) + "√" + str(int(remaining_value))  # Otherwise display factor√remaining_value
+		return str(factor) + "√" + str(int(remaining_value))  # Otherwise display factor√remaining_value
